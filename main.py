@@ -41,8 +41,16 @@ class Insta_Story_Liker:
     # Method for liking stories
     def like_stories(self, id_list: list):
         
+        print("---> Starting liking process")
         for i in id_list:
-            self.client.story_like(i)
+
+            res = self.client.story_like(i)
+
+            if res == True:
+                print(f"---> liked story with id -> {i}") 
+
+            else:
+                print(f"---> Failed liking story with id -> {i}")      
 
 
 if __name__ == '__main__':
@@ -52,8 +60,8 @@ if __name__ == '__main__':
         liker = Insta_Story_Liker("tony_bot_224", "tejomay1234")
         users_list = liker.following_list()
         all_story_ids = liker.story_ids(users_list)
-        # liker.like_stories(all_story_ids)
-        print("Finished")
+        liker.like_stories(all_story_ids)
+        print("---> Finished")
 
     except Exception as e:
 

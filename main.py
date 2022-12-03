@@ -8,10 +8,7 @@ class Insta_Story_Liker:
         self.client = Client()
 
         # Login into instagram account
-        try:
-            self.client.login(username, password)
-        except Exception as e:
-            print(f"Failed: {e}")
+        self.client.login(username, password)
 
     # Get all following users
     def following_list(self):
@@ -36,7 +33,14 @@ class Insta_Story_Liker:
 
 
 if __name__ == '__main__':
+
+    try:
     
-    liker = Insta_Story_Liker("tony_bot_224", "tejomay1234")
-    user_list = liker.following_list()
-    print(liker.story_pks(user_list))
+        liker = Insta_Story_Liker("tony_bot_224", "tejomay1234")
+        users_list = liker.following_list()
+        print(liker.story_pks(users_list))
+
+    except Exception as e:
+
+        print(f"Failed: {e}")
+        

@@ -1,3 +1,16 @@
+'''
+
+
+    => Script for liking all the instgram stories of the people in your following list <=
+
+    WARNING:- INSTAGRAM MIGHT BLOCK THE SCRIPT IF IT IS USED CONTINUOUSLY. YOU MIGHT
+    SOMETIMES SEE A MESSAGE IN THE CONSOLE WHICH TELLS TO ENTER A 6 DIGIT NUMBER WHICH
+    THE INSTGRAM WILL SEND YOU ON YOUR EMAIL/PHONE NUMBER. THE PROCESS OF LIKING TAKES
+    SOME TIME, YOU WILL NOT SEE IMMEDIATE RESULTS, SO BE PATIENT.
+
+
+'''
+
 from instagrapi import Client
 
 class Insta_Story_Liker:
@@ -7,9 +20,11 @@ class Insta_Story_Liker:
         # Created instance of instgrapi client
         self.client = Client()
 
-        # Login into instagram account
         print("---> Logging into your account")
+
+        # Login into instagram account
         self.client.login(username, password)
+
         print("---> Logged in successfully")
 
     # Get all following users
@@ -33,6 +48,7 @@ class Insta_Story_Liker:
 
         # Logging all the fetched story ids
         print("Got stories with the follwowing ids:- ")
+
         for id in all_ids:
             print(f"---> {id}")
 
@@ -42,25 +58,40 @@ class Insta_Story_Liker:
     def like_stories(self, id_list: list):
         
         print("---> Starting liking process")
+
         for i in id_list:
 
             res = self.client.story_like(i)
 
             if res == True:
+
                 print(f"---> liked story with id -> {i}") 
 
             else:
+
                 print(f"---> Failed liking story with id -> {i}")      
 
 
 if __name__ == '__main__':
 
+    username = input("Enter your username:- ")
+
+    password = input("Enter your password:- ")
+
     try:
     
-        liker = Insta_Story_Liker("tony_bot_224", "tejomay1234")
+        # Initialized Insta_Story_Liker instance
+        liker = Insta_Story_Liker(username, password)
+
+        # Got all the following users list
         users_list = liker.following_list()
+
+        # Got story ids of all the follwing users having stories
         all_story_ids = liker.story_ids(users_list)
+
+        # Liked all the stories
         liker.like_stories(all_story_ids)
+
         print("---> Finished")
 
     except Exception as e:

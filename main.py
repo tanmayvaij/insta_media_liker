@@ -14,11 +14,29 @@ class Insta_Story_Liker:
             print(f"Failed: {e}")
 
     # Get all following users
-    def get_following_list(self):
+    def following_list(self):
 
         return list(map(int, self.client.user_following(self.client.user_id).keys()))
+
+    # Get list of story pks
+    def story_pks(self, users_list: list):
+
+        # All story pk emppty list initialized
+        all_pks = []
+
+        for user_id in users_list:
+
+            # story pk list of a single user
+            single_user_pks = list(map(int, [ i.pk for i in self.client.user_stories(user_id) ]))
+
+            # Combining all story pks
+            all_pks += single_user_pks
+
+        return all_pks
+
 
 if __name__ == '__main__':
     
     liker = Insta_Story_Liker("tony_bot_224", "tejomay1234")
-    print(liker.get_following_list())
+    user_list = liker.following_list()
+    print(liker.story_pks(user_list))

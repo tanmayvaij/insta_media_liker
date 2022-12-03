@@ -8,7 +8,9 @@ class Insta_Story_Liker:
         self.client = Client()
 
         # Login into instagram account
+        print("---> Logging into your account")
         self.client.login(username, password)
+        print("---> Logged in successfully")
 
     # Get all following users
     def following_list(self):
@@ -29,6 +31,11 @@ class Insta_Story_Liker:
             # Combining all story ids
             all_ids += single_user_ids
 
+        # Logging all the fetched story ids
+        print("Got stories with the follwowing ids:- ")
+        for id in all_ids:
+            print(f"---> {id}")
+
         return all_ids
 
     # Method for liking stories
@@ -45,7 +52,7 @@ if __name__ == '__main__':
         liker = Insta_Story_Liker("tony_bot_224", "tejomay1234")
         users_list = liker.following_list()
         all_story_ids = liker.story_ids(users_list)
-        liker.like_stories(all_story_ids)
+        # liker.like_stories(all_story_ids)
         print("Finished")
 
     except Exception as e:

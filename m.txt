@@ -1,0 +1,106 @@
+[   
+    Story(  
+        pk='2984465588269000063', 
+        id='2984465588269000063_8015684279',
+        code='Clq86PhJqV_', 
+        taken_at=datetime.datetime(2022, 12, 2, 15, 47, 11, tzinfo=datetime.timezone.utc), 
+        media_type=2, product_type='story', 
+        thumbnail_url=HttpUrl('https://instagram.fpnq4-1.fna.fbcdn.net/v/t51.2885-15/317774703_1132335477642384_6107214077629000923_n.jpg?stp=dst-jpg_e15&_nc_ht=instagram.fpnq4-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=F85_EXUpe7AAX_0Tha-&edm=AHlfZHwBAAAA&ccb=7-5&oh=00_AfBuOchnuAFdSo-a3-zuG7SqwHJrko90uhtrR4JZDw08rw&oe=638CE2E4&_nc_sid=21929d', ), 
+        user=UserShort( 
+            pk='8015684279', 
+            username='fortuner_loverszz', 
+            full_name='', 
+            profile_pic_url=HttpUrl('https://instagram.fpnq4-1.fna.fbcdn.net/v/t51.2885-19/311732569_1129086818037496_8871410599998479302_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fpnq4-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=tNyKXVzCrv0AX98kZ93&edm=AHlfZHwBAAAA&ccb=7-5&oh=00_AfADCGC9Yn2jjof7En21zSP1owFb-exBePFvridA9D4lDA&oe=639097B5&_nc_sid=21929d', ), 
+            profile_pic_url_hd=None, 
+            is_private=None, 
+            stories=[]
+        ), 
+        video_url=HttpUrl('https://instagram.fpnq4-1.fna.fbcdn.net/o1/v/t16/f1/m78/924B659F6AF9976A184E0F777D8B3FA6_video_dashinit.mp4?efg=eyJxZV9ncm91cHMiOiJbXCJpZ193ZWJfZGVsaXZlcnlfdnRzX290ZlwiXSIsInZlbmNvZGVfdGFnIjoidnRzX3ZvZF91cmxnZW4uNzIwLnN0b3J5LmJhc2VsaW5lIn0&_nc_ht=instagram.fpnq4-1.fna.fbcdn.net&_nc_cat=104&vs=1104325070277143_722497402&_nc_vs=HBksFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzkyNEI2NTlGNkFGOTk3NkExODRFMEY3NzdEOEIzRkE2X3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBABUAGCRHQm0zOUJLMHktYzRGVzRHQUpVQ29XNGNzanNBYnBSMUFBQUYVAgLIAQAoABgAGwGIB3VzZV9vaWwBMRUAACautp2E39nmPxUCKAJDMywXQC3MzMzMzM0YEmRhc2hfYmFzZWxpbmVfMV92MREAdegHAA%3D%3D&ccb=9-4&oh=00_AfBSEsoqq7I0sT8shqwrInqAL1YqrhOQdmc7e3gV5iHA4w&oe=638CDFD7&_nc_sid=21929d', ), 
+        video_duration=14.9, 
+        sponsor_tags=[], 
+        mentions=[  
+            StoryMention(   
+                user=UserShort( 
+                    pk='1', 
+                    username='__ayaan_jaiswal__', 
+                    full_name='👑🅐🅨🅐🅐🅝👑 \uf8ff', 
+                    profile_pic_url=None, 
+                    profile_pic_url_hd=None, 
+                    is_private=False, 
+                    stories=[]
+                ), 
+                x=0.49999999999999906, 
+                y=0.306129807176498, 
+                width=0.634999999999999, 
+                height=0.049759614352996
+            )
+        ], 
+        links=[], 
+        hashtags=[], 
+        locations=[], 
+        stickers=[], 
+        medias=[    
+            StoryMedia( 
+                x=0.5, 
+                y=0.507598878751876, 
+                z=0, width=0.865832763988264, 
+                height=0.865832763988264, 
+                rotation=-6.824714777244028e-06, 
+                is_pinned=None, 
+                is_hidden=None, 
+                is_sticker=None, 
+                is_fb_sticker=None, 
+                media_pk=2984361169390814175, 
+                user_id=None, 
+                product_type=None, 
+                media_code='ClqlKv3AkPf'
+            )
+        ]
+    ), 
+
+    Story(  
+        pk='2984813838392404216', 
+        id='2984813838392404216_8015684279', 
+        code='ClsMF8uDKj4', 
+        taken_at=datetime.datetime(2022, 12, 3, 3, 19, 9, tzinfo=datetime.timezone.utc), 
+        media_type=2, 
+        product_type='story', 
+        thumbnail_url=HttpUrl('https://instagram.fpnq4-1.fna.fbcdn.net/v/t51.2885-15/318136586_2038689779664119_8043405010199725053_n.jpg?stp=dst-jpg_e15&_nc_ht=instagram.fpnq4-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=8J2qcWSqHl4AX9s_Bh9&edm=AHlfZHwBAAAA&ccb=7-5&oh=00_AfDW6JRP_fPLjtxgiXL05HNHOyXoTaBWY6xV6_dGo6wIlA&oe=638C9431&_nc_sid=21929d', ), 
+        user=UserShort( 
+            pk='8015684279', 
+            username='fortuner_loverszz', 
+            full_name='', 
+            profile_pic_url=HttpUrl('https://instagram.fpnq4-1.fna.fbcdn.net/v/t51.2885-19/311732569_1129086818037496_8871410599998479302_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fpnq4-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=tNyKXVzCrv0AX98kZ93&edm=AHlfZHwBAAAA&ccb=7-5&oh=00_AfADCGC9Yn2jjof7En21zSP1owFb-exBePFvridA9D4lDA&oe=639097B5&_nc_sid=21929d', ), 
+            profile_pic_url_hd=None, 
+            is_private=None, 
+            stories=[]
+        ), 
+        video_url=HttpUrl('https://instagram.fpnq4-1.fna.fbcdn.net/o1/v/t16/f1/m78/3F483725082454F6D6A65AADC76B5991_video_dashinit.mp4?efg=eyJxZV9ncm91cHMiOiJbXCJpZ193ZWJfZGVsaXZlcnlfdnRzX290ZlwiXSIsInZlbmNvZGVfdGFnIjoidnRzX3ZvZF91cmxnZW4uNzIwLnN0b3J5LmJhc2VsaW5lIn0&_nc_ht=instagram.fpnq4-1.fna.fbcdn.net&_nc_cat=101&vs=662712271982194_826926960&_nc_vs=HBksFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzNGNDgzNzI1MDgyNDU0RjZENkE2NUFBREM3NkI1OTkxX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBABUAGCRHRW1qMHdKSFlmMnVWWEFBQVAtNnllTkJDVjRvYnBSMUFBQUYVAgLIAQAoABgAGwGIB3VzZV9vaWwBMRUAACbU%2B6OTivPYPxUCKAJDMywXQC4AAAAAAAAYEmRhc2hfYmFzZWxpbmVfMV92MREAdegHAA%3D%3D&ccb=9-4&oh=00_AfDwt6MrCxBMBGCPpyEQOHFf9QZiVGo3WpT8vlgKRHr5jw&oe=638C86F8&_nc_sid=21929d', ), 
+        video_duration=15.07, 
+        sponsor_tags=[], 
+        mentions=[], 
+        links=[], 
+        hashtags=[], 
+        locations=[], 
+        stickers=[], 
+        medias=[    
+            StoryMedia( 
+                x=0.5, 
+                y=0.5, 
+                z=0, 
+                width=0.875, 
+                height=0.277083333333333, 
+                rotation=0.0, 
+                is_pinned=None, 
+                is_hidden=None, 
+                is_sticker=None, 
+                is_fb_sticker=None, 
+                media_pk=2984811868613239863, 
+                user_id=None, 
+                product_type=None, 
+                media_code='ClsLpSOD-Q3'
+            )
+        ]
+    )
+    
+]

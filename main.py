@@ -1,21 +1,19 @@
 from instagrapi import Client
 
-client = Client()
+class Insta_Story_Liker:
 
-# Taking username and password of the user
-# username = input("Enter your username:- ")
-# password = input("Enter your password:- ")
+    def __init__(self, username, password):
 
-try:
+        # Created instance of instgrapi client
+        self.client = Client()
 
-    # Login into instagram account
-    client.login('tony_bot_224', 'tejomay1234')
+        # Login into instagram account
+        try:
+            self.client.login(username, password)
+        except Exception as e:
+            print(f"Failed: {e}")
 
-    # Get all following users
-    # user_following_list = list(map(int, client.user_following(client.user_id).keys()))
+    def get_following_list(self):
 
-    print(client.user_stories(8015684279))
-
-except Exception as e:
-
-    print(f"Failed: {e}")
+        # Get all following users
+        return list(map(int, self.client.user_following(self.client.user_id).keys()))

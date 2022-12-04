@@ -33,15 +33,23 @@ class Insta_Story_Liker:
     # Get all follower users
     def follower_list(self):
 
+        print("---> Fetching follower list")
+
         # Grabbing user id of target user
         target_user_id = self.client.user_id_from_username(self.target)
 
         # return list of follower's user id
-        return list(map(int, self.client.user_followers(target_user_id).keys()))
+        flist = list(map(int, self.client.user_followers(target_user_id).keys()))
+
+        print(f"---> Fetched all followers of account - {self.target}")
+
+        return flist 
 
 
     # Get list of story ids
     def story_ids(self, users_list: list):
+
+        print("---> Fetching story ids")
 
         # All story pk empty list initialized
         all_ids = []
@@ -55,7 +63,7 @@ class Insta_Story_Liker:
             all_ids += single_user_ids
 
         # Logging all the fetched story ids
-        print(f"Got {len(all_ids)} stories with the follower ids:- ")
+        print(f"Got {len(all_ids)} stories with the ids:- ")
 
         for id in all_ids:
             print(f"---> {id}")

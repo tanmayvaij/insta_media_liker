@@ -56,37 +56,19 @@ class Insta_Story_Liker:
             
             print("---> Starting liking process")
 
-            if len(id_list) >= 15:
+            for i in id_list:
 
-                fid = id_list[0]
-
-                res = self.client.story_like(fid)
+                res = self.client.story_like(i)
 
                 if res == True:
 
-                    print(f"---> ❤️  liked story with id -> {fid}") 
+                    print(f"---> ❤️  liked story with id -> {i}") 
 
                 else:
 
-                    print(f"---> 👎 Failed liking story with id -> {fid}")    
+                    print(f"---> 👎 Failed liking story with id -> {i}")    
 
                 print("")
-
-            else:
-
-                for i in id_list:
-
-                    res = self.client.story_like(i)
-
-                    if res == True:
-
-                        print(f"---> ❤️  liked story with id -> {i}") 
-
-                    else:
-
-                        print(f"---> 👎 Failed liking story with id -> {i}")    
-
-                    print("")
 
         print("---> Fetching story ids")
 

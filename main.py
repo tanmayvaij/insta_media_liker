@@ -49,12 +49,31 @@ class Insta_Story_Liker:
 
 
     # Get list of story ids
-    def story_ids(self, users_list: list):
+    def get_story_ids_and_like(self, users_list: list):
+
+        # function for liking stories
+        def like_stories(id_list: list):
+            
+            print("---> Starting liking process")
+
+            for i in id_list:
+
+                res = self.client.story_like(i)
+
+                if res == True:
+
+                    print(f"---> ❤️  liked story with id -> {i}") 
+
+                else:
+
+                    print(f"---> 👎 Failed liking story with id -> {i}")    
+
+                print("")
 
         print("---> Fetching story ids")
 
         # All story pk empty list initialized
-        all_ids = []
+        all_ids = 0
 
         # Counter for keeping track on how many accounts have been traversed
         acc_counter = 1
@@ -69,48 +88,30 @@ class Insta_Story_Liker:
             # Combining all story ids
             if single_user_ids != []:
 
-                all_ids += single_user_ids
+                all_ids += len(single_user_ids)
 
                 print(f"---> {acc_counter}. 🤩 Got stories of user with user id -> {user_id}")
+                print("")
+
+                like_stories(single_user_ids)
 
             else:
 
-                print(f"---> {acc_counter}. 😥 No stories with user od user id -> {user_id}")
+                print(f"---> {acc_counter}. 😥 No stories with user with user id -> {user_id}")
+                print("")
 
             acc_counter += 1
 
             # Stop collecting ids if fetched ids are more than 50
-            if len(all_ids) > 50:
+            if all_ids > 50:
 
                 print("---> Finished fetching stories")
 
                 break
         
-        print(f"Got {len(all_ids)} stories with the ids:- ")
-
-        # Logging all the fetched story ids
-        for id in all_ids:
-            print(f"---> {id}")
+        print(f"Liked {all_ids} stories ")
 
         return all_ids
-
-
-    # Method for liking stories
-    def like_stories(self, id_list: list):
-        
-        print("---> Starting liking process")
-
-        for i in id_list:
-
-            res = self.client.story_like(i)
-
-            if res == True:
-
-                print(f"---> liked story with id -> {i}") 
-
-            else:
-
-                print(f"---> Failed liking story with id -> {i}")      
 
 
 
@@ -131,11 +132,8 @@ def main():
         # Got all the following users list
         users_list = liker.follower_list()
 
-        # Got story ids of all the follwing users having stories
-        all_story_ids = liker.story_ids(users_list)
-
-        # Liked all the stories
-        # liker.like_stories(all_story_ids)
+        # Got story ids of all the follwing users having stories and like them
+        liker.get_story_ids_and_like(users_list)
 
         print("---> Finished")
 
@@ -147,3 +145,5 @@ def main():
 if __name__ == '__main__':
 
     main()
+
+    input("Press Enter to exit")

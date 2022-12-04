@@ -35,7 +35,7 @@ class Insta_Story_Liker:
     # Get all follower users
     def follower_list(self):
 
-        print("---> Fetching follower list")
+        print("---> Fetching follower list, be patient")
 
         # Grabbing user id of target user
         target_user_id = self.client.user_id_from_username(self.target)
@@ -56,9 +56,12 @@ class Insta_Story_Liker:
         # All story pk empty list initialized
         all_ids = []
 
+        # Counter for keeping track on how many accounts have been traversed
+        acc_counter = 1
+
         for user_id in users_list:
 
-            print(f"---> Fetching stories of user with user id -> {user_id}")
+            print(f"---> {acc_counter}. 😐 Trying to fetch stories of user with user id -> {user_id}")
 
             # story id list of a single user
             single_user_ids = [ i.id for i in self.client.user_stories(user_id) ]
@@ -68,10 +71,19 @@ class Insta_Story_Liker:
 
                 all_ids += single_user_ids
 
-                print(f"---> Got stories of user with user id -> {user_id}")
-            
+                print(f"---> {acc_counter}. 🤩 Got stories of user with user id -> {user_id}")
+
+            else:
+
+                print(f"---> {acc_counter}. 😥 No stories with user od user id -> {user_id}")
+
+            acc_counter += 1
+
             # Stop collecting ids if fetched ids are more than 50
             if len(all_ids) > 50:
+
+                print("---> Finished fetching stories")
+
                 break
         
         print(f"Got {len(all_ids)} stories with the ids:- ")

@@ -55,7 +55,7 @@ class Insta_Story_Liker:
             all_ids += single_user_ids
 
         # Logging all the fetched story ids
-        print(f"Got {len(all_ids)} stories with the follwowing ids:- ")
+        print(f"Got {len(all_ids)} stories with the follower ids:- ")
 
         for id in all_ids:
             print(f"---> {id}")
@@ -96,13 +96,13 @@ def main():
         liker = Insta_Story_Liker(username, password, target)
 
         # Got all the following users list
-        users_list = liker.following_list()
+        users_list = liker.follower_list()
 
         # Got story ids of all the follwing users having stories
         all_story_ids = liker.story_ids(users_list)
 
         # Liked all the stories
-        liker.like_stories(all_story_ids)
+        # liker.like_stories(all_story_ids)
 
         print("---> Finished")
 
@@ -114,4 +114,3 @@ def main():
 if __name__ == '__main__':
 
     main()
-    

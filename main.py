@@ -15,6 +15,7 @@ from instagrapi import Client
 
 class Insta_Story_Liker:
 
+    # Class Contructor
     def __init__(self, username: str, password: str, target: str):
 
         # Set target profile
@@ -29,6 +30,7 @@ class Insta_Story_Liker:
         self.client.login(username, password)
 
         print("---> Logged in successfully")
+
 
     # Get all follower users
     def follower_list(self):
@@ -55,6 +57,8 @@ class Insta_Story_Liker:
         all_ids = []
 
         for user_id in users_list:
+
+            print(f"---> Fetching stories of user with user id -> {user_id}")
 
             # story id list of a single user
             single_user_ids = [ i.id for i in self.client.user_stories(user_id) ]
@@ -98,6 +102,7 @@ class Insta_Story_Liker:
 
 
 
+# Main driver function 
 def main():
 
     username = input("Enter your username:- ")

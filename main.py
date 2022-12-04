@@ -12,14 +12,21 @@
 '''
 
 from instagrapi import Client
+from time import sleep
 
 class Insta_Story_Liker:
 
     # Class Contructor
-    def __init__(self, username: str, password: str, target: str):
+    def __init__(self, username: str, password: str, target: str, no_of_accounts: int, delay: int):
 
         # Set target profile
         self.target = target
+
+        # Set number of accounts to scrap
+        self.no_of_accounts = no_of_accounts
+
+        # Set delay in each steps
+        self.delay = delay
 
         # Created instance of instgrapi client
         self.client = Client()
@@ -41,9 +48,20 @@ class Insta_Story_Liker:
         target_user_id = self.client.user_id_from_username(self.target)
 
         # return list of follower's user id
-        flist = list(map(int, self.client.user_followers(target_user_id, amount=50).keys()))
+        flist = list(map(  
+            int, 
+            self.client.user_followers( 
+                target_user_id, 
+                amount=self.no_of_accounts
+            ).keys()
+        ))
 
         print(f"---> Fetched all followers of account - {self.target}")
+
+        print(f"---> Sleeping for {self.delay} seconds")
+
+        # Stoping the code for some seconds
+        sleep(self.delay)
 
         return flist 
 
@@ -51,67 +69,50 @@ class Insta_Story_Liker:
     # Get list of story ids
     def get_story_ids_and_like(self, users_list: list):
 
-        # function for liking stories
-        def like_stories(id_list: list):
-            
-            print("---> Starting liking process")
-
-            for i in id_list:
-
-                res = self.client.story_like(i)
-
-                if res == True:
-
-                    print(f"---> ❤️  liked story with id -> {i}") 
-
-                else:
-
-                    print(f"---> 👎 Failed liking story with id -> {i}")    
-
-                print("")
-
         print("---> Fetching story ids")
-
-        # All story pk empty list initialized
-        all_ids = 0
 
         # Counter for keeping track on how many accounts have been traversed
         acc_counter = 1
+
+        like_count = 0
 
         for user_id in users_list:
 
             print(f"---> {acc_counter}. 😐 Trying to fetch stories of user with user id -> {user_id}")
 
             # story id list of a single user
-            single_user_ids = [ i.id for i in self.client.user_stories(user_id) ]
+            story_ids = [ i.id for i in self.client.user_stories(user_id) ]
 
-            # Combining all story ids
-            if single_user_ids != []:
-
-                all_ids += len(single_user_ids)
+            if story_ids != []:
 
                 print(f"---> {acc_counter}. 🤩 Got stories of user with user id -> {user_id}")
                 print("")
 
-                like_stories(single_user_ids)
+                res = self.client.story_like(story_ids[0])
+
+                if res == True:
+
+                    print(f"---> ❤️  liked story with id -> {story_ids[0]}") 
+
+                    like_count += 1
+
+                else:
+
+                    print(f"---> 👎 Failed liking story with id -> {story_ids[0]}")    
+
+                print("")
 
             else:
 
                 print(f"---> {acc_counter}. 😥 No stories with user with user id -> {user_id}")
                 print("")
 
+            # Stoping the code for some seconds
+            print(f"---> Sleeping for {self.delay} seconds")
+
+            sleep(self.delay)
+
             acc_counter += 1
-
-            # Stop collecting ids if fetched ids are more than 50
-            if all_ids > 50:
-
-                print("---> Finished fetching stories")
-
-                break
-        
-        print(f"Liked {all_ids} stories ")
-
-        return all_ids
 
 
 
@@ -124,10 +125,25 @@ def main():
 
     target = input("Enter target username:- ")
 
+    accounts = input("Enter no of accounts to target:- ")
+
+    delay = input("Enter the delay:- ")
+
+    if ( username == "" or password == "" or target == "" ) :
+        print("---> Missing details")
+        print("---> Exiting")
+        return
+
+    if accounts == "":
+        accounts = 50
+
+    if delay == "":
+        delay = 5
+
     try:
     
         # Initialized Insta_Story_Liker instance
-        liker = Insta_Story_Liker(username, password, target)
+        liker = Insta_Story_Liker(username, password, target, accounts, delay)
 
         # Got all the following users list
         users_list = liker.follower_list()

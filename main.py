@@ -125,9 +125,9 @@ def main():
 
     target = input("Enter target username:- ")
 
-    accounts = input("Enter no of accounts to target:- ")
+    accounts = int(input("Enter no of accounts to target:- "))
 
-    delay = input("Enter the delay:- ")
+    delay = int(input("Enter the delay:- "))
 
     if ( username == "" or password == "" or target == "" ) :
         print("---> Missing details")

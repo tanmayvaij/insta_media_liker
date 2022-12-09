@@ -61,6 +61,7 @@ class liker_by_username:
         # Counter for keeping track on how many accounts have been traversed
         acc_counter = 1
 
+        # Counter Keeping track on how many stories have been liked
         like_count = 0
 
         for user_id in users_list:

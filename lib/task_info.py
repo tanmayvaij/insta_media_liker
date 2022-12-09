@@ -26,7 +26,7 @@ class task_info:
 
         # Checking if username password entered or not, if not entered the exiting the code
         if self.username == "" or self.password == "":
-            print("---> Missing details")
+            print("---> Missing details, Restart the script and try again")
             print("---> Exiting")
             exit()
 

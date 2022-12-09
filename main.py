@@ -11,7 +11,7 @@
 
 '''
 
-from liker_by_username import liker_by_username
+from lib.liker_by_username import liker_by_username
 
 # Main driver function 
 def main():

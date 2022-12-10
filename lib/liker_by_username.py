@@ -1,62 +1,45 @@
-from instagrapi import Client
 from time import sleep
 
 class liker_by_username:
 
-    # Class Contructor
-    def __init__(self, username: str, password: str, target: str, no_of_accounts: int, delay: int):
-
-        # Set target profile
-        self.target = target
-
-        # Set number of accounts to scrap
-        self.no_of_accounts = no_of_accounts
-
-        # Set delay in each steps
-        self.delay = delay
-
-        # Created instance of instgrapi client
-        self.client = Client()
-
-        print("---> Logging into your account")
-
-        # Login into instagram account
-        self.client.login(username, password)
-
-        print("---> Logged in successfully")
+    # # Class Contructor
+    def __init__(self, conn, info):
+        self.conn = conn
+        self.info = info
 
 
     # Get all follower users
     def follower_list(self):
 
         print("---> Fetching follower list, be patient")
+        print("")
 
         # Grabbing user id of target user
-        target_user_id = self.client.user_id_from_username(self.target)
+        target_user_id = self.conn.user_id_from_username(self.info.target_username)
 
         # return list of follower's user id
         flist = list(map(  
             int, 
-            self.client.user_followers( 
+            self.conn.user_followers( 
                 target_user_id, 
-                amount=self.no_of_accounts
+                amount=self.info.no_of_accounts
             ).keys()
         ))
 
-        print(f"---> Fetched all followers of account - {self.target}")
+        print(f"---> Fetched all followers of account - {self.info.target_username}")
+        print("")
 
-        print(f"---> Sleeping for {self.delay} seconds")
+        print(f"---> Sleeping for {self.info.delay} seconds")
+        print("")
 
         # Stoping the code for some seconds
-        sleep(self.delay)
+        sleep(self.info.delay)
 
         return flist 
 
 
     # Get list of story ids
     def get_story_ids_and_like(self, users_list: list):
-
-        print("---> Fetching story ids")
 
         # Counter for keeping track on how many accounts have been traversed
         acc_counter = 1
@@ -69,14 +52,14 @@ class liker_by_username:
             print(f"---> {acc_counter}. 😐 Trying to fetch stories of user with user id -> {user_id}")
 
             # story id list of a single user
-            story_ids = [ i.id for i in self.client.user_stories(user_id) ]
+            story_ids = [ i.id for i in self.conn.user_stories(user_id) ]
 
             if story_ids != []:
 
                 print(f"---> {acc_counter}. 🤩 Got stories of user with user id -> {user_id}")
                 print("")
 
-                res = self.client.story_like(story_ids[0])
+                res = self.conn.story_like(story_ids[0])
 
                 if res == True:
 
@@ -96,9 +79,22 @@ class liker_by_username:
                 print("")
 
             # Stoping the code for some seconds
-            print(f"---> Sleeping for {self.delay} seconds")
+            print(f"---> Sleeping for {self.info.delay} seconds")
             print("")
 
-            sleep(self.delay)
+            sleep(self.info.delay)
 
             acc_counter += 1
+
+
+
+def start_liker_by_username(conn, info):
+
+    # Initialized liker_by_username instance
+    liker = liker_by_username(conn, info)
+
+    # Got all the following users list
+    users_list = liker.follower_list()
+
+    # Got story ids of all the follwing users having stories and like them
+    liker.get_story_ids_and_like(users_list)

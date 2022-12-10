@@ -23,15 +23,16 @@ def main():
     info.log_info()
 
     # created connection with instagram api
-    conn = connection(info.username, info.password).conn
+    conn1 = connection(info.username, info.password).conn
+    conn2 = connection(info.username, info.password).conn
     
     # calling liker by username if username is given
     if info.target_username_exists:
-        start_liker_by_username(conn, info)
+        start_liker_by_username(conn1, info)
 
     # calling liker by hashtag if hashtag is given
     if info.target_hashtag_exists:
-        start_liker_by_hashtag(conn, info)
+        start_liker_by_hashtag(conn2, info)
 
     print("---> Finished")
     print("")

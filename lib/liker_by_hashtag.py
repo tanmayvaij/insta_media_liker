@@ -20,6 +20,9 @@ class liker_by_hashtag:
         # Top #1 media from hashtag
         top_media_info = self.conn.hashtag_medias_top(self.info.target_hashtag, amount=1)[0]
 
+        print(f"Got media with id:- {top_media_info.id}")
+        print("")
+
         # Liking the post
         res = self.conn.media_like(str(top_media_info.id))
 

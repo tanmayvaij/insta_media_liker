@@ -26,8 +26,8 @@ def main():
     conn = connection(info.username, info.password).conn
     
     # calling liker by username if username is given
-    # if info.target_username_exists:
-    #     start_liker_by_username(conn, info)
+    if info.target_username_exists:
+        start_liker_by_username(conn, info)
 
     # calling liker by hashtag if hashtag is given
     if info.target_hashtag_exists:
@@ -44,6 +44,3 @@ if __name__ == '__main__':
 
     except Exception as e:
         print(f"Failed: {e}")
-
-    finally:
-        input("Press Enter to exit")

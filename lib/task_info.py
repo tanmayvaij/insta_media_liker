@@ -30,7 +30,7 @@ class task_info:
         # Checking if username password entered or not, if not entered the exiting the code
         if self.username == "" or self.password == "":
             print("---> Missing username and password")
-            print("---> Add your username, password and try again")
+            print("---> Add your username, password in config.env and try again")
             print("---> Exiting")
             exit()
 

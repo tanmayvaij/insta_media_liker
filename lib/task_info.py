@@ -1,5 +1,8 @@
 class task_info:
 
+    """
+        A class for getting all the details from the user
+    """
 
     # Getting all information from the user
     def __init__(self):

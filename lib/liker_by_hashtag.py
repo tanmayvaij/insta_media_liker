@@ -2,6 +2,7 @@ from time import sleep
 
 class liker_by_hashtag:
 
+    # contructor for getting connection and information object
     def __init__(self, conn, info):
         self.conn = conn
         self.info = info
@@ -35,8 +36,15 @@ class liker_by_hashtag:
 
 def start_liker_by_hashtag(conn, info):
 
-    # initialized liker_by_hashtag instance
-    liker = liker_by_hashtag(conn, info)
+    try: 
 
-    # Liking the top media
-    liker.like_top_media()
+        # initialized liker_by_hashtag instance
+        liker = liker_by_hashtag(conn, info)
+
+        # Liking the top media
+        liker.like_top_media()
+
+    except Exception as e:
+        print("---> Error Occurred while liking by hashtag")
+        print(f"---> Failed: {e}")
+        print("")

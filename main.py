@@ -12,17 +12,26 @@
 from lib.task_info import task_info
 from lib.connection import connection
 from lib.liker_by_username import start_liker_by_username
+from lib.liker_by_hashtag import start_liker_by_hashtag
 
 
 # Main driver function 
 def main():
 
+    # task_info instance for collecting, logging the information from user
     info = task_info()
     info.log_info()
 
+    # created connection with instagram api
     conn = connection(info.username, info.password).conn
     
-    start_liker_by_username(conn, info)
+    # calling liker by username if username is given
+    if info.target_username_exists:
+        start_liker_by_username(conn, info)
+
+    # calling liker by hashtag if hashtag is given
+    if info.target_hashtag_exists:
+        start_liker_by_hashtag(conn, info)
 
     print("---> Finished")
     print("")

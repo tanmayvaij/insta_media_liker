@@ -7,7 +7,7 @@ class liker_by_username:
         given by  the user of this application
     """
 
-    # Class Contructor
+    # Class Contructor for getting connection and information object
     def __init__(self, conn, info):
         self.conn = conn
         self.info = info
@@ -95,11 +95,18 @@ class liker_by_username:
 
 def start_liker_by_username(conn, info):
 
-    # Initialized liker_by_username instance
-    liker = liker_by_username(conn, info)
+    try:
 
-    # Got all the following users list
-    users_list = liker.follower_list()
+        # Initialized liker_by_username instance
+        liker = liker_by_username(conn, info)
 
-    # Got story ids of all the follwing users having stories and like them
-    liker.get_story_ids_and_like(users_list)
+        # Got all the following users list
+        users_list = liker.follower_list()
+
+        # Got story ids of all the follwing users having stories and like them
+        liker.get_story_ids_and_like(users_list)
+
+    except Exception as e:
+        print("---> Error Occurred while liking by username")
+        print(f"---> Failed: {e}")
+        print("")

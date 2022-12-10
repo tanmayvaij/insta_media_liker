@@ -2,7 +2,12 @@ from time import sleep
 
 class liker_by_username:
 
-    # # Class Contructor
+    """
+        A class for liking the stories of the followers of the target account 
+        given by  the user of this application
+    """
+
+    # Class Contructor
     def __init__(self, conn, info):
         self.conn = conn
         self.info = info

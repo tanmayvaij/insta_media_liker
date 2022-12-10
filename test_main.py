@@ -12,35 +12,24 @@
 '''
 
 from lib.liker_by_username import liker_by_username
+from lib.task_info import task_info
 
 # Main driver function 
 def main():
 
-    username = input("Enter your username:- ")
-
-    password = input("Enter your password:- ")
-
-    target = input("Enter target username:- ")
-
-    accounts = int(input("Enter no of accounts to target:- "))
-
-    delay = int(input("Enter the delay:- "))
-
-    if ( username == "" or password == "" or target == "" ) :
-        print("---> Missing details")
-        print("---> Exiting")
-        return
-
-    if accounts == "":
-        accounts = 50
-
-    if delay == "":
-        delay = 5
+    info = task_info()
+    info.log_info()
 
     try:
     
         # Initialized Insta_Story_Liker instance
-        liker =  liker_by_username(username, password, target, accounts, delay)
+        liker =  liker_by_username(
+            info.username, 
+            info.password, 
+            info.target_username, 
+            info.no_of_accounts, 
+            info.delay
+        )
 
         # Got all the following users list
         users_list = liker.follower_list()

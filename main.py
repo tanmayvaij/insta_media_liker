@@ -22,8 +22,14 @@ def main():
     info = task_info()
     info.log_info()
 
-    # created connection with instagram api
+    # created one connection with instagram api for liking stories
+    print("Creating first connection for liking stories")
+    print("")
     conn1 = connection(info.username, info.password).conn
+
+    # created one connection with instagram api for liking posts
+    print("Creating second connection for liking posts")
+    print("")
     conn2 = connection(info.username, info.password).conn
     
     # calling liker by username if username is given

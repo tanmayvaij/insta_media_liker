@@ -19,10 +19,15 @@ class task_info:
         self.username = environ.get("INSTAGRAM_USERNAME")
         self.password = environ.get("INSTAGRAM_PASSWORD")
 
-        # User Inputs
+        # target username details
         self.target_username = input("Enter target username:- ")
-        self.target_hashtag = input("Enter target hashtag:- ")
         self.no_of_accounts = input("Enter no of accounts to target (default: 50):- ")
+
+        # target hashtag details
+        self.target_hashtag = input("Enter target hashtag:- ")
+        self.no_of_posts = input("Enter no of posts to like (default: 50):- ")
+
+        # delay in each step
         self.delay = input("Enter the delay: (default: 5)- ")
 
         print("")
@@ -51,6 +56,12 @@ class task_info:
             self.no_of_accounts = 50
         else:
             self.no_of_accounts = int(self.no_of_accounts)
+
+        # If no. of posts not set, then setting it to 50 by default
+        if self.no_of_posts == "":
+            self.no_of_posts = 50
+        else:
+            self.no_of_posts = int(self.no_of_posts)
 
         # If delay in each step not set, then setting it to 5 by default
         if self.delay == "":

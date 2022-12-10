@@ -32,7 +32,7 @@ class liker_by_hashtag:
 
     def like_recent_media(self, posts_ids: list):
 
-        print("---> Starting with liking top media by hashtag")
+        print("---> Starting with liking recent media by hashtag")
         print("")
 
         # Stoping the code for some seconds

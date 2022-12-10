@@ -1,3 +1,8 @@
+from dotenv import load_dotenv
+from os import environ
+
+load_dotenv("./config.env")
+
 class task_info:
 
     """
@@ -7,14 +12,27 @@ class task_info:
     # Getting all information from the user
     def __init__(self):
 
-        # Taking inputs
-        self.username = input("Enter your username:- ")
-        self.password = input("Enter your password:- ")
+        print("---> Just hit enter if you dont want to specify anything or keep the default values")
+        print("")
+
+        # System inputs
+        self.username = environ.get("INSTAGRAM_USERNAME")
+        self.password = environ.get("INSTAGRAM_PASSWORD")
+
+        # User Inputs
         self.target_username = input("Enter target username:- ")
-        self.target_hashtag = input("Enter target hastag:- ")
+        self.target_hashtag = input("Enter target hashtag:- ")
         self.no_of_accounts = input("Enter no of accounts to target (default: 50):- ")
         self.delay = input("Enter the delay: (default: 5)- ")
+
         print("")
+
+        # Checking if username password entered or not, if not entered the exiting the code
+        if self.username == "" or self.password == "":
+            print("---> Missing username and password")
+            print("---> Add your username, password and try again")
+            print("---> Exiting")
+            exit()
 
         # Check if some target username exists or not
         if self.target_username != "":
@@ -27,12 +45,6 @@ class task_info:
             self.target_hashtag_exists = True
         else:
             self.target_hashtag_exists = False
-
-        # Checking if username password entered or not, if not entered the exiting the code
-        if self.username == "" or self.password == "":
-            print("---> Missing details, Restart the script and try again")
-            print("---> Exiting")
-            exit()
 
         # If no. of accounts not set, then setting it to 50 by default
         if self.no_of_accounts == "":

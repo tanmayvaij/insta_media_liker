@@ -18,19 +18,17 @@ class liker_by_hashtag:
         sleep(self.info.delay)
 
         # Top #1 media from hashtag
-        top_media = self.conn.hashtag_medias_top(self.info.target_hashtag, amount=1)[0].dict()
+        top_media_info = self.conn.hashtag_medias_top(self.info.target_hashtag, amount=1)[0]
 
-        # Got id of the top most media
-        media_id = top_media.id
-
-        res = self.conn.media_like(media_id)
+        # Liking the post
+        res = self.conn.media_like(str(top_media_info.id))
 
         if res == True:
-            print(f"---> ❤️  liked media with id -> {media_id}") 
+            print(f"---> ❤️  liked media with id -> {top_media_info.id}") 
             print("")
 
         else:
-            print(f"---> 👎 Failed liking story with id -> {media_id}")    
+            print(f"---> 👎 Failed liking story with id -> {top_media_info.id}")    
             print("")
 
 

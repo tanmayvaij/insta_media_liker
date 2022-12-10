@@ -40,18 +40,23 @@ class liker_by_hashtag:
         print("")        
         sleep(self.info.delay)
 
+        # Counter for keeping track on posts liking process
+        like_counter = 1
+
         # Liking all the posts in loop
         for post_id in posts_ids:
    
             res = self.conn.media_like(post_id)
 
             if res == True:
-                print(f"---> ❤️  liked media with id -> {post_id}") 
+                print(f"---> {like_counter} ❤️  liked media with id -> {post_id}") 
                 print("")
 
             else:
-                print(f"---> 👎 Failed liking story with id -> {post_id}")    
+                print(f"---> {like_counter} 👎 Failed liking story with id -> {post_id}")    
                 print("")
+
+            like_counter += 1
 
             # Stoping the code for some seconds
             print(f"---> Sleeping for {self.info.delay} seconds")
